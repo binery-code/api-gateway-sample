@@ -1,0 +1,15 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: prodService
+          uri: http://localhost:8084/
+          predicates:
+            - Path=/v1/api/**
+        - id: userService
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/user/**
